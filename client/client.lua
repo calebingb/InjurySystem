@@ -11,7 +11,7 @@ function MonitorHealth()
         TriggerEvent('playerInjured', previousHealth - health)
     end
 
-    if previousHealth <= health then
+    if previousHealth < health then
         print("You were healed!")
     end
 
