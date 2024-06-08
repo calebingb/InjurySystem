@@ -7,7 +7,7 @@ function MonitorHealth()
     if health < previousHealth then
         -- Player Injured
         local playerID = GetPlayerServerId(PlayerPedId())
-        local boneVal = GetPedLastDamageBone(playerPed)
+        local _, boneVal = GetPedLastDamageBone(playerPed)
         TriggerServerEvent('playerInjured', playerID, previousHealth - health, boneVal)
         TriggerEvent('playerInjured', previousHealth - health)
     end
