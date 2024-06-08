@@ -6,6 +6,8 @@ function MonitorHealth()
 
     if health < previousHealth then
         -- Player Injured
+        local playerID = GetPlayerServerId(PlayerPedId())
+        TriggerServerEvent('playerInjured', playerID, previousHealth - health)
         TriggerEvent('playerInjured', previousHealth - health)
     end
 
@@ -23,4 +25,8 @@ Citizen.CreateThread(function ()
         Citizen.Wait(1000)
         MonitorHealth()
     end
+end)
+
+AddEventHandler('playerInjured', function (damage)
+    print("You were injured, where you took damage of: " .. damage)
 end)
