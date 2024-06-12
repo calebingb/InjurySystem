@@ -1,10 +1,6 @@
 local previousHealth = 0
 
-if (ESX.IsPlayerLoaded()) then 
-    local xID = ESX.GetPlayerData().identifier
-else
-    local xID = nil
-end
+local xID = ESX.GetPlayerData().identifier
 
 function MonitorHealth()
     local playerPed = GetPlayerPed(-1)
