@@ -1,5 +1,7 @@
 local previousHealth = 0
 
+local xID = nil
+
 function MonitorHealth()
     local playerPed = GetPlayerPed(-1)
     local health = GetEntityHealth(playerPed)
@@ -8,7 +10,7 @@ function MonitorHealth()
         -- Player Injured
         local playerID = GetPlayerServerId(-1)
         local _, boneVal = GetPedLastDamageBone(playerPed)
-        TriggerServerEvent('InjurySystem:playerInjured', playerID)
+        TriggerServerEvent('InjurySystem:playerInjured', xID)
         TriggerEvent('InjurySystem:playerInjured', previousHealth - health)
     end
 
@@ -20,6 +22,8 @@ function MonitorHealth()
 end
 
 AddEventHandler('playerSpawned', function ()
+    xID = ESX.GetPlayerData().identifier
+
     local playerPed = GetPlayerPed(-1)
     previousHealth = GetEntityHealth(playerPed)
     
