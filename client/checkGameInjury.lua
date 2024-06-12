@@ -1,4 +1,4 @@
-RegisterCommand('skel', function (source, args)
+RegisterCommand('skel', function (source)
     print("Triggering Server event for skel...")
     print(source)
     TriggerServerEvent("InjurySystem:getGameInjury")
