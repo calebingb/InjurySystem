@@ -23,8 +23,7 @@ function MonitorHealth()
         --local causeOfDamage = GetPedSourceOfDamage(playerPed)
 
         local lastDamageType = nil
-        if IsPedInAnyVehicle(playerPed, false) then
-            print("Player not in vehicle")
+        if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
             lastDamageType = 'Vehicle'
         elseif HasPedBeenDamagedByWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), 0) then
             lastDamageType = 'Unarmed Melee'
