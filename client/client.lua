@@ -14,6 +14,7 @@ end
 
 function MonitorHealth()
     local playerPed = GetPlayerPed(-1)
+    local pedID = PlayerPedId()
     local health = GetEntityHealth(playerPed)
 
     if health < previousHealth then
@@ -26,7 +27,7 @@ function MonitorHealth()
         local lastDamageType = nil
         if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
             lastDamageType = 'Vehicle'
-        elseif causeOfDamage == GetHashKey('WEAPON_UNARMED') then
+        elseif HasEntityBeenDamagedByWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), 0) then
             lastDamageType = 'Unarmed Melee'
         elseif Config.stabWeaponHashes[causeOfDamage] then
             lastDamageType = 'Stab'
