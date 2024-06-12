@@ -1,3 +1,3 @@
 Config = {}
 
-Config.majorInjuryThreshold = 40
+Config.majorInjuryThreshold = 20
