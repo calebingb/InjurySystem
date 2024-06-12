@@ -22,7 +22,7 @@ function MonitorHealth()
         local playerID = GetPlayerServerId(-1)
         local _, boneVal = GetPedLastDamageBone(playerPed)
 
-        local causeOfDamage = GetPedSourceOfDamage(playerPed)
+        --local causeOfDamage = GetPedSourceOfDamage(playerPed)
 
         local lastDamageType = nil
         if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
