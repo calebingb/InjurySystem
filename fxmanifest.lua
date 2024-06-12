@@ -8,11 +8,11 @@ client_scripts {
 }
 
 server_scripts {
+    '@oxmysql/lib/MySQL.lua',
     'server/server.lua',
     'config/serverCfg.lua'
 }
 
 shared_scripts {
-    '@oxmysql/lib/MySQL.lua',
     '@es_extended/imports.lua'
 }

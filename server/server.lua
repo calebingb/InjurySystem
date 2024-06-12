@@ -1,3 +1,5 @@
+local MySQL = exports['oxmysql']
+
 RegisterNetEvent('InjurySystem:playerInjured')
 AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
     local xPlayer = ESX.GetPlayerFromIdentifier(xID)
@@ -14,11 +16,7 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
         
         local json = '{"?": [{"damage": ?, "damageType": "?"}]}'
 
-        local sql = [[
-            INSERT INTO injuries (cid, injuries)
-            VALUES (']] .. "?', '" .. json .. "')" .. "\n\t\t " ..
-            [[ON DUPLICATE KEY UPDATE
-            injuries = JSON_MERGE(injuries, VALUES(injuries));]]
+        local sql = "INSERT INTO injuries (cid, injuries) VALUES (?, " .. json ") ON DUPLICATE KEY UPDATE injuries = JSON_MERGE(injuries, VALUES(injuries));"
 
         print (sql)
         MySQL.prepare(sql, {xPlayer.cid, boneId, damage, damageType})
