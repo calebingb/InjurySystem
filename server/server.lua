@@ -16,8 +16,7 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
 
         local sql = [[
             INSERT INTO injuries (cid, injuries)
-            VALUES (']] .. xPlayer.cid .. "', '" .. json .. "')" .. [[
-            ON DUPLICATE KEY UPDATE
+            VALUES (']] .. xPlayer.cid .. "', '" .. json .. "')" .. [[\nON DUPLICATE KEY UPDATE
             injuries = JSON_MERGE(injuries, VALUES(injuries));]]
 
         print (sql)
