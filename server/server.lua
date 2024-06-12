@@ -1,6 +1,3 @@
-Config = Config or {}
-require("config.serverCfg")
-
 RegisterNetEvent('InjurySystem:playerInjured')
 AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
     local xPlayer = ESX.GetPlayerFromIdentifier(xID)
@@ -12,7 +9,7 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
         if damage >= Config.majorInjuryThreshold then
             damageType = "major"
         end
-        
+
         print("Player " .. xPlayer.cid .. " was injured for " .. damage .. " the wound type is: " .. damageType)
     end
 end)

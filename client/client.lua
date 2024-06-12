@@ -1,6 +1,3 @@
-Config = Config or {}
-require("config.clientCfg")
-
 local previousHealth = 0
 
 local xID = nil
