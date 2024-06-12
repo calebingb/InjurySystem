@@ -26,6 +26,6 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
         local sql = 'INSERT INTO injuries (cid, injuries) VALUES (?, ?) ON DUPLICATE KEY UPDATE injuries = JSON_MERGE(injuries, VALUES(injuries));'
 
         print (sql)
-        MySQL.prepare(sql, {xPlayer.cid, json})
+        MySQL.prepare(sql, {tostring(xPlayer.cid), json})
     end
 end)
