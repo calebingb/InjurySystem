@@ -15,10 +15,12 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
         print("Player " .. xPlayer.cid .. " was injured for " .. damage .. " the wound type is: " .. damageType)
         
         local json = '{"?": [{"damage": ?, "damageType": "?"}]}'
+        json = string.gsub(json, '"?"', '"%s"')
+        json = string.format(json, boneId, damage, damageType)
 
-        local sql = 'INSERT INTO injuries (cid, injuries) VALUES (?, "{"?": [{"damage": ?, "damageType": "?"}]}") ON DUPLICATE KEY UPDATE injuries = JSON_MERGE(injuries, VALUES(injuries));'
+        local sql = 'INSERT INTO injuries (cid, injuries) VALUES (?, ?) ON DUPLICATE KEY UPDATE injuries = JSON_MERGE(injuries, VALUES(injuries));'
 
         print (sql)
-        MySQL.prepare(sql, {xPlayer.cid, boneId, damage, damageType})
+        MySQL.prepare(sql, {xPlayer.cid, json})
     end
 end)
