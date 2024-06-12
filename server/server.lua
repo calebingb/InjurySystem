@@ -20,6 +20,6 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
             [[ON DUPLICATE KEY UPDATE
             injuries = JSON_MERGE(injuries, VALUES(injuries));]]
 
-        
+        print (sql)
     end
 end)
