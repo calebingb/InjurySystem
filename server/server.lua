@@ -12,14 +12,14 @@ AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
 
         print("Player " .. xPlayer.cid .. " was injured for " .. damage .. " the wound type is: " .. damageType)
         
-        local json = '{"' .. boneId .. '": [{"damage": ' .. damage .. ', "damageType": "' .. damageType .. '"}]}'
+        local json = '{"?": [{"damage": ?, "damageType": "?"}]}'
 
         local sql = [[
             INSERT INTO injuries (cid, injuries)
-            VALUES (']] .. xPlayer.cid .. "', '" .. json .. "')" .. "\n\t\t" ..
+            VALUES (']] .. "?, '" .. json .. "')" .. "\n\t\t " ..
             [[ON DUPLICATE KEY UPDATE
             injuries = JSON_MERGE(injuries, VALUES(injuries));]]
 
-        print (sql)
+        
     end
 end)
