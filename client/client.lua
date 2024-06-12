@@ -20,6 +20,22 @@ function MonitorHealth()
         -- Player Injured
         local playerID = GetPlayerServerId(-1)
         local _, boneVal = GetPedLastDamageBone(playerPed)
+
+        local causeOfDamage = GetPedSourceOfDamage(playerPed)
+
+        local lastDamageType = nil
+        if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
+            lastDamageType = 'Vehicle'
+        elseif causeOfDamage == GetHashKey('WEAPON_UNARMED') then
+            lastDamageType = 'Unarmed Melee'
+        elseif Config.stabWeaponHashes[causeOfDamage] then
+            lastDamageType = 'Stab'
+        else
+            lastDamageType = 'Other'
+        end
+
+        print("Damaged from: " .. lastDamageType)
+
         TriggerServerEvent('InjurySystem:playerInjured', xID, (previousHealth - health), boneVal)
         TriggerEvent('InjurySystem:playerInjured', previousHealth - health)
     end
