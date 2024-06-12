@@ -1,6 +1,7 @@
 local previousHealth = 0
 
 local xID = ESX.GetPlayerData().identifier
+print("Player ident: " .. xID)
 
 function MonitorHealth()
     local playerPed = GetPlayerPed(-1)
