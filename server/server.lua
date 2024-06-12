@@ -1,5 +1,3 @@
-local MySQL = exports['oxmysql']
-
 RegisterNetEvent('InjurySystem:playerInjured')
 AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
     local xPlayer = ESX.GetPlayerFromIdentifier(xID)
