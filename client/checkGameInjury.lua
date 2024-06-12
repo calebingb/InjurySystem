@@ -1,10 +1,10 @@
-RegisterCommand('InjurySystem:skel', function (source, args)
+RegisterCommand('skel', function (source, args)
     print("Triggering Server event for skel...")
     print(source)
-    --TriggerServerEvent("InjurySystem:getGameInjury",playerServerID)
+    TriggerServerEvent("InjurySystem:getGameInjury", source)
 end, false)
 
 RegisterNetEvent("InjurySystem:retGameInjury")
-AddEventHandler("InjurySystem:retGameInjury", function (xID, json)
-    
+AddEventHandler("InjurySystem:retGameInjury", function (source, json)
+    print(json)
 end)
