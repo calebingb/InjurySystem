@@ -13,19 +13,18 @@ function GetID()
 end
 
 function MonitorHealth()
-    local playerPed = GetPlayerPed(-1)
-    local pedID = PlayerPedId()
+    local playerPed = PlayerPedId()
     local health = GetEntityHealth(playerPed)
 
     if health < previousHealth then
         -- Player Injured
-        local playerID = GetPlayerServerId(-1)
         local _, boneVal = GetPedLastDamageBone(playerPed)
 
         --local causeOfDamage = GetPedSourceOfDamage(playerPed)
 
         local lastDamageType = nil
-        if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(pedID) then
+        if IsPedInAnyVehicle(playerPed, false) then
+            print("Player not in vehicle")
             lastDamageType = 'Vehicle'
         elseif HasPedBeenDamagedByWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), 0) then
             lastDamageType = 'Unarmed Melee'
