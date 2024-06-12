@@ -1,10 +1,10 @@
 RegisterCommand('skel', function (source, args)
     print("Triggering Server event for skel...")
     print(source)
-    TriggerServerEvent("InjurySystem:getGameInjury", source)
+    TriggerServerEvent("InjurySystem:getGameInjury")
 end, false)
 
 RegisterNetEvent("InjurySystem:retGameInjury")
-AddEventHandler("InjurySystem:retGameInjury", function (source, json)
+AddEventHandler("InjurySystem:retGameInjury", function (json)
     print(json)
 end)
