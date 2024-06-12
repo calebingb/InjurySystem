@@ -1,7 +1,16 @@
 local previousHealth = 0
 
-local xID = ESX.GetPlayerData().identifier
-print("Player ident: " .. xID)
+local xID = nil
+function GetID()
+    if (ESX.IsPlayerLoaded()) then 
+        local xID = ESX.GetPlayerData().identifier
+        print ("xID = " .. xID)
+    else
+        print("Waiting to load in...")
+        Citizen.Wait(1000)
+        GetID()
+    end
+end
 
 function MonitorHealth()
     local playerPed = GetPlayerPed(-1)
@@ -28,6 +37,10 @@ AddEventHandler('playerSpawned', function ()
     local playerPed = GetPlayerPed(-1)
     previousHealth = GetEntityHealth(playerPed)
     
+end)
+
+Citizen.CreateThread(function ()
+    GetID()
 end)
 
 Citizen.CreateThread(function ()
