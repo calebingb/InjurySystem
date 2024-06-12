@@ -1,3 +1,6 @@
+Config = Config or {}
+require("config.clientCfg")
+
 local previousHealth = 0
 
 local xID = nil
@@ -20,7 +23,7 @@ function MonitorHealth()
         -- Player Injured
         local playerID = GetPlayerServerId(-1)
         local _, boneVal = GetPedLastDamageBone(playerPed)
-        TriggerServerEvent('InjurySystem:playerInjured', xID)
+        TriggerServerEvent('InjurySystem:playerInjured', xID, (previousHealth - health), boneVal)
         TriggerEvent('InjurySystem:playerInjured', previousHealth - health)
     end
 
@@ -50,6 +53,6 @@ Citizen.CreateThread(function ()
     end
 end)
 
-AddEventHandler('InjurySystem', function (damage)
+AddEventHandler('InjurySystem:playerInjured', function (damage)
     print("You were injured, where you took damage of: " .. damage)
 end)
