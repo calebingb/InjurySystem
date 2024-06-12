@@ -1,6 +1,5 @@
 RegisterCommand('skel', function (source)
     print("Triggering Server event for skel...")
-    print(source)
     TriggerServerEvent("InjurySystem:getGameInjury")
 end, false)
 
