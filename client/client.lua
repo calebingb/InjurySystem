@@ -24,6 +24,8 @@ function MonitorHealth()
 
         local lastDamageType = nil
         if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
+            lastDamageType = 'Accident'
+        elseif (not IsPedInAnyVehicle(playerPed, false)) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
             lastDamageType = 'Vehicle'
         elseif HasPedBeenDamagedByWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), 0) then
             lastDamageType = 'Unarmed Melee'
