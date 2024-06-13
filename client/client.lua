@@ -57,6 +57,8 @@ function MonitorHealth()
     end
 
     previousHealth = health
+    ClearEntityLastDamageEntity(playerPed)
+    ClearEntityLastWeaponDamage(playerPed)
 end
 
 AddEventHandler('playerSpawned', function ()
