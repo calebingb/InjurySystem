@@ -14,9 +14,10 @@ AddEventHandler("InjurySystem:retGameInjury", function (jsonString)
         print("Injury data for bone " .. boneID .. "...")
         for _, injury in ipairs(injuries) do
             local damage = injury.damage
-            local injurySeverity = injury.damageType
+            local injurySeverity = injury.severity
+            local damageCause = injury.damageCause
 
-            print("Damage: " .. damage .. ", Injury Severity: " .. injurySeverity)
+            print("Damage: " .. damage .. ", Injury Severity: " .. injurySeverity .. ", Injury Cause: " .. damageCause)
         end
     end
 end)
