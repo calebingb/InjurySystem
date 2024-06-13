@@ -20,8 +20,8 @@ function FindInjuryCause (playerPed)
             end
         end
 
-        for _, weaponHash in pairs(Config.gunWeaponsSolid) do
-            if HasPedBeenDamagedByWeapon(playerPed, tonumber(weaponHash, 16), 0) then
+        for _, weaponHash in ipairs(Config.gunWeaponsSolid) do
+            if HasPedBeenDamagedByWeapon(playerPed, GetHashKey(weaponHash), 0) then
                 wasShotSolid = true
                 break
             end
