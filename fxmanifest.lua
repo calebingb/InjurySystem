@@ -5,7 +5,8 @@ lua54 'yes'
 client_scripts {
     'client/client.lua',
     'config/clientCfg.lua',
-    'client/checkGameInjury.lua'
+    'client/checkGameInjury.lua',
+    'client/injuryCause.lua'
 }
 
 server_scripts {
