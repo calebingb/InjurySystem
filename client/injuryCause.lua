@@ -6,6 +6,7 @@ function FindInjuryCause (playerPed)
         lastDamageType = 'Vehicle'
     elseif HasPedBeenDamagedByWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), 0) then
         lastDamageType = 'Unarmed Melee'
+        print(GetHashKey('WEAPON_UNARMED'))
     else
         local wasStabbed = false
         local wasShotSolid = false
