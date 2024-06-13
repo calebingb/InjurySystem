@@ -22,29 +22,7 @@ function MonitorHealth()
 
         --local causeOfDamage = GetPedSourceOfDamage(playerPed)
 
-        local lastDamageType = nil
-        if IsPedInAnyVehicle(playerPed, false) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
-            lastDamageType = 'Accident'
-        elseif (not IsPedInAnyVehicle(playerPed, false)) and HasEntityBeenDamagedByAnyVehicle(playerPed) then
-            lastDamageType = 'Vehicle'
-        elseif HasPedBeenDamagedByWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), 0) then
-            lastDamageType = 'Unarmed Melee'
-        else
-            local wasStabbed = false
-
-            for _, weaponHash in ipairs(Config.stabWeaponHashes) do
-                if HasPedBeenDamagedByWeapon(playerPed, weaponHash, 0) then
-                    wasStabbed = true
-                    break
-                end
-            end
-
-            if wasStabbed then
-                lastDamageType = 'Stab'
-            else
-                lastDamageType = 'Other'
-            end
-        end
+        local lastDamageType = FindInjuryCause(playerPed) -- Function in injuryCause.lua
 
         print("Damaged from: " .. lastDamageType)
 
