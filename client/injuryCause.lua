@@ -13,29 +13,29 @@ function FindInjuryCause (playerPed)
         local wasShotBuck = false
         local wasTaserProngs = false
 
-        for _, weaponHash in pairs(Config.stabWeapons) do
-            if HasPedBeenDamagedByWeapon(playerPed, tonumber(weaponHash, 16), 0) then
+        for _, weaponName in ipairs(Config.stabWeapons) do
+            if HasPedBeenDamagedByWeapon(playerPed, GetHashKey(weaponName), 0) then
                 wasStabbed = true
                 break
             end
         end
 
-        for _, weaponHash in ipairs(Config.gunWeaponsSolid) do
-            if HasPedBeenDamagedByWeapon(playerPed, GetHashKey(weaponHash), 0) then
+        for _, weaponName in ipairs(Config.gunWeaponsSolid) do
+            if HasPedBeenDamagedByWeapon(playerPed, GetHashKey(weaponName), 0) then
                 wasShotSolid = true
                 break
             end
         end
 
-        for _, weaponHash in pairs(Config.gunWeaponsBuck) do
-            if HasPedBeenDamagedByWeapon(playerPed, tonumber(weaponHash, 16), 0) then
+        for _, weaponName in ipairs(Config.gunWeaponsBuck) do
+            if HasPedBeenDamagedByWeapon(playerPed, GetHashKey(weaponName), 0) then
                 wasShotBuck = true
                 break
             end
         end
 
-        for _, weaponHash in pairs(Config.stunDeployables) do
-            if HasPedBeenDamagedByWeapon(playerPed, tonumber(weaponHash, 16), 0) then
+        for _, weaponName in ipairs(Config.stunDeployables) do
+            if HasPedBeenDamagedByWeapon(playerPed, GetHashKey(weaponName), 0) then
                 wasTaserProngs = true
                 break
             end

@@ -1,13 +1,13 @@
 Config = {}
 
 Config.stabWeapons = {
-    ["dagger"] = "0x92A27487",
-    ["hatchet"] = "0xF9DCBF2D",
-    ["knife"] = "0x99B507EA",
-    ["machete"] = "0xDD5DF8D9",
-    ["switchblade"] = "0xDFE37640",
-    ["battleaxe"] = "0xCD274149",
-    ["stone_hatchet"] = "0x3813FC08"
+    "weapon_dagger",
+    "weapon_hatchet",
+    "weapon_knife",
+    "weapon_machete",
+    "weapon_switchblade",
+    "weapon_battleaxe",
+    "weapon_stone_hatchet"
 }
 
 Config.gunWeaponsSolid = {
@@ -56,16 +56,16 @@ Config.gunWeaponsSolid = {
 }
 
 Config.gunWeaponsBuck = {
-    ["pumpshotgun"] = "0x1D073A89",
-    ["pumpshotgun_mk2"] = "0x555AF99A",
-    ["sawnoffshotgun"] = "0x7846A318",
-    ["assaultshotgun"] = "0xE284C527",
-    ["bullpupshotgun"] = "0x9D61E50F",
-    ["heavyshotgun"] = "0x3AABBBAA",
-    ["dbshotgun"] = "0xEF951FBB",
-    ["autoshotgun"] = "0x12E82D3D"
+    "weapon_pumpshotgun",
+    "weapon_pumpshotgun_mk2",
+    "weapon_sawnoffshotgun",
+    "weapon_assaultshotgun",
+    "weapon_bullpupshotgun",
+    "weapon_heavyshotgun",
+    "weapon_dbshotgun",
+    "weapon_autoshotgun"
 }
 
 Config.stunDeployables = {
-    ["stungun"] = "0x3656C8C1"
+    "weapon_stungun"
 }
