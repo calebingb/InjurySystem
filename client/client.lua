@@ -26,7 +26,7 @@ function MonitorHealth()
 
         print("Damaged from: " .. lastDamageType)
 
-        TriggerServerEvent('InjurySystem:playerInjured', xID, (previousHealth - health), boneVal)
+        TriggerServerEvent('InjurySystem:playerInjured', xID, (previousHealth - health), boneVal, lastDamageType)
         TriggerEvent('InjurySystem:playerInjured', previousHealth - health)
     end
 

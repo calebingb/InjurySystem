@@ -1,21 +1,22 @@
 RegisterNetEvent('InjurySystem:playerInjured')
-AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId)
+AddEventHandler('InjurySystem:playerInjured', function (xID, damage, boneId, lastDamageType)
     local xPlayer = ESX.GetPlayerFromIdentifier(xID)
 
     if xPlayer then
         print (xPlayer.cid);
 
-        local damageType = "minor"
+        local severity = "minor"
         if damage >= Config.majorInjuryThreshold then
-            damageType = "major"
+            severity = "major"
         end
 
-        print("Player " .. xPlayer.cid .. " was injured for " .. damage .. " the wound type is: " .. damageType)
+        print("Player " .. xPlayer.cid .. " was injured for " .. damage .. " the wound type is: " .. severity)
         
         local injuryData = {
             [tostring(boneId)] = {{
                 damage = damage,
-                damageType = damageType
+                severity = severity,
+                damageCause = lastDamageType
             }}
         }
 
